@@ -1,0 +1,46 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/basics.scss";
+
+.container {
+  @extend %container-shared;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 52px;
+  align-items: center;
+  .search {
+    @extend %container-shared;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    height: 28px;
+    width: 215px;
+    background-color: $gray;
+    input {
+      height: 100%;
+      width: 100%;
+      border: none;
+      background-color: $gray;
+    }
+
+    svg {
+      color: gray;
+    }
+
+    @media only screen and (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  .icons {
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      fill: black;
+    }
+  }
+}

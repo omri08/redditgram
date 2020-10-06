@@ -15,6 +15,7 @@
     "webpack": "^4.35.2"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@middy/core": "^1.4.0",
     "@middy/http-error-handler": "^1.4.0",
     "@middy/http-json-body-parser": "^1.4.0",
