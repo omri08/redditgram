@@ -1,6 +1,7 @@
 import middy from "@middy/core";
 import httpErrorHanlder from "@middy/http-error-handler";
 import createError from "http-errors";
+import cors from "@middy/http-cors";
 import { fetchPosts } from "../lib/fetchPosts";
 
 async function getPosts(event, context) {
@@ -23,4 +24,4 @@ async function getPosts(event, context) {
   };
 }
 
-export const handler = middy(getPosts).use(httpErrorHanlder());
+export const handler = middy(getPosts).use([httpErrorHanlder(), cors()]);

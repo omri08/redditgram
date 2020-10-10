@@ -10,6 +10,11 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "chrome-aws-lambda": "^5.2.1",
+    "eslint": "^7.10.0",
+    "eslint-plugin-react": "^7.21.3",
+    "puppeteer": "^5.2.1",
+    "puppeteer-core": "^5.2.1",
     "serverless-bundle": "^1.3.3",
     "serverless-pseudo-parameters": "^2.5.0",
     "webpack": "^4.35.2"
@@ -17,10 +22,14 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@middy/core": "^1.4.0",
+    "@middy/http-cors": "^1.4.0",
     "@middy/http-error-handler": "^1.4.0",
     "@middy/http-json-body-parser": "^1.4.0",
     "aws-sdk": "^2.639.0",
     "http-errors": "^1.8.0",
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^2.6.1"
+  },
+  "scripts": {
+    "deploy-win": "MKDIR .build && MKLINK /j .build\\node_modules node_modules && sls deploy"
   }
 }

@@ -6,11 +6,12 @@ export async function fetchPosts(subreddit, query) {
 
   if (query) baseURL = baseURL.concat(query);
 
+  console.log(baseURL);
   try {
     let result = await fetch(baseURL);
     result = await result.json();
 
-    const posts = parsePosts(result.data);
+    const posts = await parsePosts(result.data);
 
     return {
       posts,
@@ -23,13 +24,16 @@ export async function fetchPosts(subreddit, query) {
   }
 }
 
-function parsePosts(data) {
+async function parsePosts(data) {
   let posts = data.children;
+  const res = [];
 
-  posts = posts
-    .filter((post) => isImage(post.data.url))
-    .map((post) => formatPost(post));
-  return posts;
+  for (let i = 0; i < posts.length; i++)
+    if (isImage(posts[i].data.url)) res.push(posts[i]);
+
+  for (let i = 0; i < res.length; i++) res[i] = await formatPost(res[i]);
+
+  return res;
 }
 
 function isImage(url) {
@@ -45,27 +49,23 @@ function isImage(url) {
   return false;
 }
 
-function formatPost(post) {
+async function formatPost(post) {
   return {
     type: "IMAGE",
-    media: cleanUrl(post.data.url),
+    media: await cleanUrl(post.data.url),
     thumbnail: post.data.thumbnail,
     title: post.data.title,
   };
 }
 
-function cleanUrl(url) {
+async function cleanUrl(url) {
   //Get original imgur gif
-  url = url.replace("gifv", "gif");
+  let res = url.replace("gifv", "gif");
 
   //Try to get original gfycat gif
-  if (url.includes("gfycat") && !url.includes(".gif")) {
-    let endUrl = url.split("/");
-    endUrl = endUrl[endUrl.length - 1];
-    return "https://zippy.gfycat.com/" + endUrl + ".gif";
+  if (res.includes("gfycat") && !res.includes(".gif")) {
+    res = await getGifFromGfy(res);
   }
 
-  return url;
+  return res;
 }
-
-fetchPosts();

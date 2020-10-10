@@ -8,7 +8,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs12.x
-  memorySize: 256
+  memorySize: 2048
   stage: ${opt:stage, 'dev'}
   region: "eu-west-1"
 
@@ -19,3 +19,6 @@ functions:
       - http:
           method: GET
           path: /posts/{subreddit}
+          cors: true
+    layers:
+      - arn:aws:lambda:eu-west-1:764866452798:layer:chrome-aws-lambda:10
