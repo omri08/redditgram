@@ -1,4 +1,5 @@
 export default function postsReducer(state, action) {
+  console.log("here");
   switch (action.type) {
     case "LOADING":
       return {
@@ -13,7 +14,7 @@ export default function postsReducer(state, action) {
     case "COMPLETE":
       return {
         ...state,
-        posts: action.payload.data,
+        posts: action.payload,
         loading: false,
       };
 

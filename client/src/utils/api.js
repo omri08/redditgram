@@ -8,11 +8,9 @@ export async function getPosts(dispatch, url) {
   dispatch({ type: "LOADING" });
   try {
     const res = await api.get(url);
-    console.log(res);
-    dispatch({ type: "COMPLETE", payload: res });
+    dispatch({ type: "COMPLETE", payload: res.data });
   } catch (error) {
     dispatch({ type: "ERROR" });
-    console.log(error);
   }
 }
 
