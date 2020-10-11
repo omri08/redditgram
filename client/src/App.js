@@ -4,7 +4,7 @@ import { AppProvider } from "./context/context";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Loved from "./pages/loved/Loved";
-
+import "antd/dist/antd.css";
 import "./App.scss";
 
 function App() {

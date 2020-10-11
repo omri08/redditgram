@@ -1,0 +1,18 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/basics.scss";
+
+.container {
+  width: 80vw;
+  height: 8vh;
+
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  gap: 5px;
+
+  .btn {
+    scroll-snap-align: start;
+  }
+}
