@@ -59,8 +59,10 @@ async function formatPost(post) {
 }
 
 async function cleanUrl(url) {
+  let res;
   //Get original imgur gif
-  let res = url.replace("gifv", "gif");
+  if (url.includes("imgur")) res = url.replace("gifv", "mp4");
+  else res = url.replace("gifv", "gif");
 
   //Try to get original gfycat gif
   if (res.includes("gfycat") && !res.includes(".gif")) {

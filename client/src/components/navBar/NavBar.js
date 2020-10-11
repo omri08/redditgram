@@ -16,12 +16,6 @@ function NavBar() {
       <Button className={styles.btn}>Link15</Button>
       <Button className={styles.btn}>Link15</Button>
       <Button className={styles.btn}>Link17</Button>
-      <Button className={styles.btn}>Link19</Button>
-      <Button className={styles.btn}>Link1-7</Button>
-      <Button className={styles.btn}>Link1-7</Button>
-      <Button className={styles.btn}>Link1-7</Button>
-      <Button className={styles.btn}>Link1-7</Button>
-      <Button className={styles.btn}>Link1-7</Button>
     </div>
   );
 }
