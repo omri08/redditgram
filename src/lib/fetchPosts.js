@@ -49,8 +49,7 @@ function isValid(url) {
 }
 
 function checkType(url) {
-  if (url.includes(".jpg") || url.includes(".gif") || url.includes(".png"))
-    return "IMAGE";
+  if (url.includes(".jpg") || url.includes(".png")) return "IMAGE";
   else return "VIDEO";
 }
 
