@@ -2,7 +2,7 @@ service:
   name: make-u-happy
 
 plugins:
-  - serverless-bundle
+  - serverless-webpack
   - serverless-pseudo-parameters
 
 provider:
@@ -20,5 +20,3 @@ functions:
           method: GET
           path: /posts/{subreddit}
           cors: true
-    layers:
-      - arn:aws:lambda:eu-west-1:764866452798:layer:chrome-aws-lambda:10

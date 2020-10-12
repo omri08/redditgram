@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import { getGifFromGfy } from "./scrapeGif";
-
 export async function fetchPosts(subreddit, query) {
   let baseURL = `https://www.reddit.com/r/${subreddit}.json`;
 
@@ -26,17 +25,17 @@ export async function fetchPosts(subreddit, query) {
 
 async function parsePosts(data) {
   let posts = data.children;
-  const res = [];
 
-  for (let i = 0; i < posts.length; i++)
-    if (isImage(posts[i].data.url)) res.push(posts[i]);
-
-  for (let i = 0; i < res.length; i++) res[i] = await formatPost(res[i]);
+  const res = Promise.all(
+    posts
+      .filter((post) => isValid(post.data.url))
+      .map((post) => formatPost(post))
+  );
 
   return res;
 }
 
-function isImage(url) {
+function isValid(url) {
   if (
     url.includes(".jpg") ||
     url.includes(".gif") ||
@@ -49,9 +48,15 @@ function isImage(url) {
   return false;
 }
 
+function checkType(url) {
+  if (url.includes(".jpg") || url.includes(".gif") || url.includes(".png"))
+    return "IMAGE";
+  else return "VIDEO";
+}
+
 async function formatPost(post) {
   return {
-    type: "IMAGE",
+    type: checkType(post.data.url),
     media: await cleanUrl(post.data.url),
     thumbnail: post.data.thumbnail,
     title: post.data.title,
@@ -62,12 +67,10 @@ async function cleanUrl(url) {
   let res;
   //Get original imgur gif
   if (url.includes("imgur")) res = url.replace("gifv", "mp4");
-  else res = url.replace("gifv", "gif");
-
   //Try to get original gfycat gif
-  if (res.includes("gfycat") && !res.includes(".gif")) {
-    res = await getGifFromGfy(res);
-  }
+  else if (url.includes("gfycat")) {
+    res = getGifFromGfy(url);
+  } else res = url.replace("gifv", "gif");
 
   return res;
 }
