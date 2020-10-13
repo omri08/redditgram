@@ -4,8 +4,8 @@ import style from "./Card.module.scss";
 function Card({ post }) {
   return (
     <div className={style.container}>
-      {post.media.includes("mp4") ? (
-        <video autoPlay loop>
+      {post.type === "VIDEO" ? (
+        <video autoPlay loop controls muted>
           <source src={post.media} type="video/mp4"></source>
         </video>
       ) : (

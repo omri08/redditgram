@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import Card from "../card/Card";
 import styles from "./Gallery.module.scss";
 
-export default function Gallery({ posts, loading }) {
-  if (loading) return "loading";
+export default function Gallery({ posts }) {
   return (
     <div className={styles.container}>
       {posts.posts.map((post) => (
@@ -16,5 +15,4 @@ export default function Gallery({ posts, loading }) {
 
 Gallery.propTypes = {
   posts: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
