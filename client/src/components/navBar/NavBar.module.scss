@@ -1,29 +1,18 @@
 @import "../../assets/styles/colors.scss";
 @import "../../assets/styles/basics.scss";
-
 .container {
-  width: 80vw;
-  height: 8vh;
-
+  width: 90vw;
   display: flex;
+  justify-content: center;
+  .scroll {
+    width: 90vw;
+    height: 4rem !important;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
 
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  gap: 5px;
-
-  .btn {
-    scroll-snap-align: start;
-  }
-  @media only screen and (min-width: 640px) {
-    justify-content: center;
-    &::-webkit-scrollbar {
-      display: none;
+    .btn {
+      scroll-snap-align: start;
     }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
   }
 }

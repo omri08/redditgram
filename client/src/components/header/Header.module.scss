@@ -8,6 +8,10 @@
   justify-content: space-around;
   height: 52px;
   align-items: center;
+  * {
+    overflow: hidden;
+  }
+
   .search {
     @extend %container-shared;
     padding: 5px;

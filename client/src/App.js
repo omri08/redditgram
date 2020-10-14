@@ -15,7 +15,7 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/loved" component={Loved} />
-            <Route exact path="/" component={Home} />
+            <Route path="/" component={Home} />
           </Switch>
         </Router>
       </div>

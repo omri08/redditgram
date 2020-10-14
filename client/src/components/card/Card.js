@@ -19,4 +19,4 @@ Card.propTypes = {
   post: PropTypes.object.isRequired,
 };
 
-export default Card;
+export default React.memo(Card);
