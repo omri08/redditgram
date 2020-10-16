@@ -55,6 +55,7 @@ function checkType(url) {
 
 async function formatPost(post) {
   return {
+    id: post.data.id,
     type: checkType(post.data.url),
     media: await cleanUrl(post.data.url),
     thumbnail: post.data.thumbnail,
