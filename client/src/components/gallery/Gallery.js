@@ -7,7 +7,7 @@ export default function Gallery({ posts }) {
   return (
     <div className={styles.container}>
       {posts.posts.map((post) => (
-        <Card post={post} />
+        <Card key={post.id} post={post} />
       ))}
     </div>
   );

@@ -3,7 +3,7 @@ import { useState, useMemo, useEffect } from "react";
 export function useComponent(base, ChangeTo, bool) {
   const [component, setComponent] = useState(base);
 
-  const res = useMemo(() => {
+  useMemo(() => {
     if (bool) setComponent(ChangeTo);
     else setComponent(base);
   }, [bool]);

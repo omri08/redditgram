@@ -1,23 +1,37 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { Button } from "antd";
 import styles from "./NavBar.module.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
 function NavBar() {
+  const history = useHistory();
+  const names = [
+    "aww",
+    "Earth Porn",
+    "Cozy Places",
+    "Village Porn",
+    "Praise TheCamera Man",
+    "Perfect Timing",
+    "GIFs",
+    "wholesome memes",
+    "nonononoyes",
+    "never tell me the odds",
+  ];
+
+  function changeUrl(url) {
+    const merge = url.replaceAll(" ", "");
+    const final = "/" + merge;
+    history.replace(final);
+  }
   return (
     <div className={styles.container}>
       <PerfectScrollbar className={styles.scroll}>
-        <Button className={styles.btn}>Aww</Button>
-        <Button className={styles.btn}>FoodPorn</Button>
-        <Button className={styles.btn}>EarthPorn</Button>
-        <Button className={styles.btn}>Cozy Places</Button>
-        <Button className={styles.btn}>VillagePorn</Button>
-        <Button className={styles.btn}>PraiseTheCameraMan</Button>
-        <Button className={styles.btn}>Perfect Timing</Button>
-        <Button className={styles.btn}>GIFs</Button>
-        <Button className={styles.btn}>wholesomememes</Button>
-        <Button className={styles.btn}>nonononoyes</Button>
-        <Button className={styles.btn}>nevertellmetheodds</Button>
+        {names.map((text) => (
+          <Button className={styles.btn} onClick={() => changeUrl(text)}>
+            {text}
+          </Button>
+        ))}
       </PerfectScrollbar>
     </div>
   );

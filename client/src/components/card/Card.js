@@ -9,7 +9,7 @@ function Card({ post }) {
           <source src={post.media} type="video/mp4"></source>
         </video>
       ) : (
-        <img src={post.media} />
+        <img alt={post.title} src={post.media} />
       )}
     </div>
   );

@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { tryGet } from "../../utils/api";
 import NavBar from "../../components/navBar/NavBar";
 import Gallery from "../../components/gallery/Gallery";
 import styles from "./Home.module.scss";
 
 function Home() {
+  const history = useHistory();
   const [posts, setPosts] = useState({});
   const [loading, setLoading] = useState(false);
   const [element, setElement] = useState(null);
@@ -23,10 +25,14 @@ function Home() {
     }
   );
 
+  useEffect(() => {
+    console.log("called");
+  });
+
   async function loadPosts() {
     let final;
     setLoading(true);
-    const res = await tryGet("/posts/aww", posts.after);
+    const res = await tryGet(setPath(), posts.after);
     if (Object.keys(posts).length !== 0) {
       final = {
         after: res.data.after,
@@ -38,6 +44,13 @@ function Home() {
     setLoading(false);
   }
 
+  function setPath() {
+    let endPoint;
+    if (history.location.pathname === "/") endPoint = "/aww";
+    else endPoint = history.location.pathname;
+
+    return `/posts${endPoint}`;
+  }
   useEffect(() => {
     const currentElement = element;
     const currentObserver = observer.current;
@@ -48,6 +61,11 @@ function Home() {
       if (currentElement) currentObserver.unobserve(currentElement);
     };
   }, [element]);
+
+  useEffect(() => {
+    loader.current = loadPosts;
+    setPosts({});
+  }, [history.location.pathname]);
 
   useEffect(() => {
     loader.current = loadPosts;
