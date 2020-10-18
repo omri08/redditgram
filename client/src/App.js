@@ -4,6 +4,7 @@ import { StateProvider } from "./context/context";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Loved from "./pages/loved/Loved";
+import Post from "./pages/post/Post";
 import "antd/dist/antd.css";
 import "./App.scss";
 
@@ -15,6 +16,7 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/loved" component={Loved} />
+            <Route exact path="/post/:id" component={Post} />
             <Route path="/" component={Home} />
           </Switch>
         </Router>

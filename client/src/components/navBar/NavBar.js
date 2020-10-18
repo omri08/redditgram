@@ -9,6 +9,7 @@ function NavBar() {
   const names = [
     "aww",
     "Earth Porn",
+    "Food Porn",
     "Cozy Places",
     "Village Porn",
     "Praise TheCamera Man",
