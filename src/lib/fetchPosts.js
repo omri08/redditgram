@@ -36,19 +36,14 @@ async function parsePosts(data) {
 }
 
 function isValid(url) {
-  if (isImage(url) || url.includes("gfycat")) {
+  if (isImage(url) || url.includes("gfycat") || url.includes(".gif")) {
     return true;
   }
   return false;
 }
 
 function isImage(url) {
-  if (
-    url.includes(".jpg") ||
-    url.includes(".gif") ||
-    url.includes(".png") ||
-    url.includes(".jpeg")
-  ) {
+  if (url.includes(".jpg") || url.includes(".png") || url.includes(".jpeg")) {
     return true;
   }
   return false;
@@ -70,13 +65,14 @@ async function formatPost(post) {
 }
 
 async function cleanUrl(url) {
-  let res;
-  //Get original imgur gif
-  if (url.includes("imgur")) res = url.replace(/gifv|gif/, "mp4");
-  //Try to get original gfycat gif
-  else if (url.includes("gfycat")) {
-    res = getGifFromGfy(url);
-  } else res = url.replace("gifv", "gif");
-
-  return res;
+  if (checkType(url) === "VIDEO") {
+    let res;
+    //Get original imgur gif
+    if (url.includes("imgur")) res = url.replace(/gifv|gif/, "mp4");
+    //Try to get original gfycat gif
+    else if (url.includes("gfycat")) {
+      res = getGifFromGfy(url);
+    } else res = url.replace("gifv", "gif");
+    return res;
+  } else return url;
 }
