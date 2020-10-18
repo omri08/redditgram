@@ -36,21 +36,27 @@ async function parsePosts(data) {
 }
 
 function isValid(url) {
-  if (
-    url.includes(".jpg") ||
-    url.includes(".gif") ||
-    url.includes(".png") ||
-    url.includes(".jpeg") ||
-    url.includes("gfycat")
-  ) {
+  if (isImage(url) || url.includes("gfycat")) {
     return true;
   }
   return false;
 }
 
+function isImage(url) {
+  if (
+    url.includes(".jpg") ||
+    url.includes(".gif") ||
+    url.includes(".png") ||
+    url.includes(".jpeg")
+  ) {
+    return true;
+  }
+  return false;
+}
 function checkType(url) {
-  if (url.includes(".jpg") || url.includes(".png")) return "IMAGE";
-  else return "VIDEO";
+  if ((url.includes("imgur") || url.includes("gfycat")) && !isImage(url))
+    return "VIDEO";
+  else return "IMAGE";
 }
 
 async function formatPost(post) {
