@@ -1,8 +1,6 @@
-import middy from "@middy/core";
-import httpErrorHanlder from "@middy/http-error-handler";
+import commonMiddleware from "../lib/commonMiddleware";
 import createError from "http-errors";
-import cors from "@middy/http-cors";
-import { fetchPost } from "../lib/fetchFromReddit";
+import { fetchPost } from "../lib/reddit/fetchPost";
 
 async function getPost(event) {
   const { id } = event.pathParameters;
@@ -18,4 +16,4 @@ async function getPost(event) {
   };
 }
 
-export const handler = middy(getPost).use([httpErrorHanlder(), cors()]);
+export const handler = commonMiddleware(getPost);
