@@ -20,3 +20,10 @@ functions:
           method: GET
           path: /posts/{subreddit}
           cors: true
+  getPost:
+    handler: src/handlers/getPost.handler
+    events:
+      - http:
+          method: GET
+          path: /post/{id}
+          cors: true

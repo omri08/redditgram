@@ -2,9 +2,9 @@ import middy from "@middy/core";
 import httpErrorHanlder from "@middy/http-error-handler";
 import createError from "http-errors";
 import cors from "@middy/http-cors";
-import { fetchPosts } from "../lib/fetchPosts";
+import { fetchPosts } from "../lib/fetchFromReddit";
 
-async function getPosts(event, context) {
+async function getPosts(event) {
   const { subreddit } = event.pathParameters;
   const params = event.queryStringParameters;
   let query;
