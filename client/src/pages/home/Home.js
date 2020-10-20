@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import { useHistory } from "react-router-dom";
 import { tryGet } from "../../utils/api";
 import NavBar from "../../components/navBar/NavBar";
@@ -7,10 +13,15 @@ import styles from "./Home.module.scss";
 
 function Home() {
   const history = useHistory();
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(false);
   const [element, setElement] = useState(null);
-  const loader = useRef(loadPosts);
+  const loadPostsCallBack = useCallback(loadPosts, [
+    history.location.pathname,
+    posts,
+  ]);
+  const loader = useRef(loadPostsCallBack);
+
   const observer = useRef(
     new IntersectionObserver(async (entries) => {
       const first = entries[0];
@@ -25,15 +36,11 @@ function Home() {
     }
   );
 
-  useEffect(() => {
-    console.log("called");
-  });
-
   async function loadPosts() {
     let final;
     setLoading(true);
-    const res = await tryGet(setPath(), posts.after);
-    if (Object.keys(posts).length !== 0) {
+    const res = await tryGet(setPath(), posts ? posts.after : null);
+    if (posts) {
       final = {
         after: res.data.after,
         posts: posts.posts.concat(res.data.posts),
@@ -51,6 +58,7 @@ function Home() {
 
     return `/posts${endPoint}`;
   }
+
   useEffect(() => {
     const currentElement = element;
     const currentObserver = observer.current;
@@ -62,19 +70,18 @@ function Home() {
     };
   }, [element]);
 
-  useEffect(() => {
-    loader.current = loadPosts;
-    setPosts({});
+  useLayoutEffect(() => {
+    setPosts(null);
   }, [history.location.pathname]);
 
   useEffect(() => {
-    loader.current = loadPosts;
-  }, [loadPosts]);
+    loader.current = loadPostsCallBack;
+  }, [loadPostsCallBack]);
 
   return (
     <div className={styles.container}>
       <NavBar />
-      {Object.keys(posts).length !== 0 && <Gallery posts={posts} />}
+      {posts && <Gallery posts={posts} />}
       {loading && <li>Loading...</li>}
 
       {!loading && (
