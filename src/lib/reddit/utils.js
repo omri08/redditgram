@@ -1,6 +1,6 @@
 import { getGifFromGfy } from "./scrapeGif";
 
-export function parsePosts(data) {
+export async function parsePosts(data) {
   let posts = data.children;
 
   const res = Promise.all(
@@ -53,3 +53,28 @@ export async function cleanUrl(url) {
     return res;
   } else return url;
 }
+
+export function formatReplies(replies) {
+  const arr = [];
+
+  for (let i = 0; i < replies.data.children.length; i++) {
+    const mainReplay = replies.data.children[i].data;
+    console.log(mainReplay);
+    const formatted = {
+      ups: mainReplay.ups,
+      id: mainReplay.id,
+      author: mainReplay.author,
+      body: mainReplay.body,
+    };
+    arr.push(formatted);
+  }
+  return arr;
+}
+
+// function hasReplies(reply) {
+//   if (reply) {
+//     if (Object.keys(reply).length !== 0) {
+//       return true;
+//     } else return false;
+//   } else return false;
+// }
