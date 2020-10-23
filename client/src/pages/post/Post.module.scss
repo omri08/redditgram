@@ -1,0 +1,85 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/basics.scss";
+
+.container {
+  width: 100vw;
+  padding: 1rem 3rem;
+  min-height: calc(92vh - 5px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 640px) {
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  .content {
+    @extend %container-shared;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    width: 50%;
+
+    @media only screen and (max-width: 640px) {
+      width: 100%;
+    }
+    .info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .titles {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .sub {
+          color: black;
+          font-weight: bold;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .author {
+          color: $font_gray;
+        }
+
+        .ups {
+          .icon {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+
+  .replies {
+    @extend %container-shared;
+    min-height: 20vh;
+    max-height: 80vh;
+    width: 40%;
+    padding: 0.8rem;
+    border-radius: 3px;
+
+    @media only screen and (max-width: 640px) {
+      width: 100%;
+      margin-top: 1rem;
+      border: none;
+    }
+  }
+}
+
+.spin {
+  color: $font_gray !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 10% !important;
+  i {
+    background-color: $font_gray;
+  }
+}
