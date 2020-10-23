@@ -1,6 +1,9 @@
 @import "../../assets/styles/colors.scss";
 @import "../../assets/styles/basics.scss";
-
+@font-face {
+  font-family: Billabong;
+  src: url(../../assets/fonts/Billabong.ttf);
+}
 .container {
   @extend %container-shared;
   width: 100%;
@@ -45,5 +48,11 @@
 
   span {
     background-color: white;
+  }
+
+  h1 {
+    font-family: Billabong;
+    font-size: 2.5rem;
+    margin-top: auto;
   }
 }

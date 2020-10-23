@@ -20,9 +20,9 @@ export default function Header() {
   const { width } = useWindowSize();
   return (
     <div className={styles.container}>
-      <h1>Hello World</h1>
+      <h1>RedditGram</h1>
       <Search
-        placeholder="Search subreddit"
+        placeholder="Search subreddits"
         onSearch={(value) => console.log(value)}
         style={{ width: 200 }}
         className={styles.search}
