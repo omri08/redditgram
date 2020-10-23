@@ -14,11 +14,14 @@ export async function getPosts(dispatch, url) {
   }
 }
 
-export async function tryGet(url, after) {
-  let res;
-  if (after) res = await api.get(url, { params: { after } });
-  else res = await api.get(url);
-
-  return res;
+export async function apiGet(url, params) {
+  try {
+    let res;
+    if (params) res = await api.get(url, { params: { ...params } });
+    else res = await api.get(url);
+    return res;
+  } catch (error) {
+    return null;
+  }
 }
 export default api;

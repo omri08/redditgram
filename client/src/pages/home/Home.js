@@ -6,7 +6,8 @@ import React, {
   useCallback,
 } from "react";
 import { useHistory } from "react-router-dom";
-import { tryGet } from "../../utils/api";
+import { Spin } from "antd";
+import { apiGet } from "../../utils/api";
 import NavBar from "../../components/navBar/NavBar";
 import Gallery from "../../components/gallery/Gallery";
 import styles from "./Home.module.scss";
@@ -39,7 +40,12 @@ function Home() {
   async function loadPosts() {
     let final;
     setLoading(true);
-    const res = await tryGet(setPath(), posts ? posts.after : null);
+    const params = posts
+      ? {
+          after: posts.after,
+        }
+      : null;
+    const res = await apiGet(setPath(), params);
     if (posts) {
       final = {
         after: res.data.after,
@@ -53,7 +59,7 @@ function Home() {
 
   function setPath() {
     let endPoint;
-    if (history.location.pathname === "/") endPoint = "/aww";
+    if (history.location.pathname === "/") endPoint = "/all";
     else endPoint = history.location.pathname;
 
     return `/posts${endPoint}`;
@@ -82,8 +88,7 @@ function Home() {
     <div className={styles.container}>
       <NavBar />
       {posts && <Gallery posts={posts} />}
-      {loading && <li>Loading...</li>}
-
+      {loading && <Spin tip="Loading" className={styles.spin} />}
       {!loading && (
         <li ref={setElement} style={{ background: "transparent" }}></li>
       )}

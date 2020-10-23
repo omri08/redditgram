@@ -8,4 +8,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  .spin {
+    color: $font_gray;
+    i {
+      background-color: $font_gray;
+    }
+  }
 }
