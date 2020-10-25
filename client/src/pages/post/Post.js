@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { useParams, Link } from "react-router-dom";
 import { HeartFilled } from "@ant-design/icons";
-import { Spin } from "antd";
+import Spin from "../../components/Spin/Spin";
 import Reply from "../../components/reply/Reply";
 import Card from "../../components/card/Card";
 import { apiGet } from "../../utils/api";
@@ -27,7 +27,7 @@ function Post() {
     loadPost();
   }, []);
 
-  if (loading) return <Spin tip="Loading" className={style.spin} />;
+  if (loading) return <Spin tip="Loading" />;
   return (
     <div className={style.container}>
       <div className={style.content}>
