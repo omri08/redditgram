@@ -1,0 +1,43 @@
+@import "../../assets/styles/colors.scss";
+
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 0.8rem;
+  flex-direction: column;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    .info {
+      display: flex;
+      min-width: 200px;
+      padding: 0.3rem;
+      svg {
+        height: 32px;
+        width: 32px;
+        border-radius: 100%;
+        margin-top: 0.3rem;
+        margin-right: 1rem;
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        a {
+          color: black;
+          font-weight: bold;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        p {
+          color: $font_gray;
+        }
+      }
+    }
+  }
+  .divider {
+    margin: 3px 0;
+  }
+}

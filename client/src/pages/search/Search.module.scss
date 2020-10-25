@@ -1,0 +1,23 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/basics.scss";
+
+.container {
+  width: 100vw;
+  padding: 1rem 3rem;
+  min-height: calc(92vh - 5px);
+  display: flex;
+  justify-content: center;
+  .content {
+    @extend %container-shared;
+    width: 80vw;
+    background-color: $white;
+
+    @media only screen and (max-width: 640px) {
+      width: 100vw;
+    }
+  }
+
+  @media only screen and (max-width: 640px) {
+    padding: 0;
+  }
+}
