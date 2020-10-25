@@ -1,7 +1,7 @@
 import React from "react";
 import { Input, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { useComponent, useWindowSize } from "../../utils/hooks";
 import { ReactComponent as HomeIcon } from "../../assets/svg/home.svg";
 import { ReactComponent as HomeFilledIcon } from "../../assets/svg/homeFilled.svg";
@@ -14,17 +14,20 @@ const { Search } = Input;
 
 export default function Header() {
   const { pathname } = useLocation();
+  const history = useHistory();
   const Home = useComponent(HomeIcon, HomeFilledIcon, "/" === pathname);
   const Heart = useComponent(HeartIcon, HeartFilledIcon, "/loved" === pathname);
 
   const { width } = useWindowSize();
   return (
     <div className={styles.container}>
-      <h1>RedditGram</h1>
+      <Link className={styles.logo} to="/">
+        <h1>RedditGram</h1>
+      </Link>
       <Search
         placeholder="Search subreddits"
-        onSearch={(value) => console.log(value)}
-        style={{ width: 200 }}
+        onSearch={(value) => history.push(`/search/${value}`)}
+        style={{ width: 400 }}
         className={styles.search}
       />
       <span className={styles.icons}>
