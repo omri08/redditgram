@@ -27,3 +27,10 @@ functions:
           method: GET
           path: /post/{id}
           cors: true
+  searchSubs:
+    handler: src/handlers/searchSubs.handler
+    events:
+      - http:
+          method: GET
+          path: /search/{sub}
+          cors: true
