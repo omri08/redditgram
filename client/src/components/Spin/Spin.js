@@ -4,7 +4,7 @@ import style from "./Spin.module.scss";
 function Spin({ tip } = " ") {
   return (
     <>
-      <AntdSpin tip={`${tip}`} className={style.spin} />;
+      <AntdSpin tip={`${tip}`} className={style.spin} />
     </>
   );
 }

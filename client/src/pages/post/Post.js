@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { useParams, Link } from "react-router-dom";
 import { HeartFilled } from "@ant-design/icons";
-import Spin from "../../components/Spin/Spin";
-import Reply from "../../components/reply/Reply";
-import Card from "../../components/card/Card";
+import { Spin, Reply, Card } from "../../components";
 import { apiGet } from "../../utils/api";
 import style from "./Post.module.scss";
 
@@ -25,7 +23,7 @@ function Post() {
       setLoading(false);
     }
     loadPost();
-  }, []);
+  }, [id]);
 
   if (loading) return <Spin tip="Loading" />;
   return (

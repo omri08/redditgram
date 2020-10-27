@@ -43,6 +43,10 @@
       height: 28px;
       fill: black;
     }
+    @media only screen and (max-width: 640px) {
+      justify-content: flex-end;
+      gap: 1rem;
+    }
   }
 
   span {

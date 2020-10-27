@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiGet } from "../../utils/api";
-import Spin from "../../components/Spin/Spin";
-import SearchResult from "../../components/searchResult/SearchResult";
+import { Spin, SearchResult } from "../../components";
 import styles from "./Search.module.scss";
 
 export default function Search() {
@@ -16,11 +15,11 @@ export default function Search() {
       setSubs(data.data.children);
       setLoading(false);
     }
+
     loadSubs();
   }, [query]);
 
   if (loading) return <Spin tip="Searching" />;
-
   return (
     <div className={styles.container}>
       <div className={styles.content}>

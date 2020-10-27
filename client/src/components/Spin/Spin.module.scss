@@ -2,10 +2,10 @@
 
 .spin {
   color: $font_gray !important;
-  position: absolute !important;
-  left: 50% !important;
-  top: 10% !important;
+  position: absolute;
+  left: 50%;
+  top: 10%;
   i {
-    background-color: $font_gray;
+    background-color: $font_gray !important;
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Divider } from "antd";
-import { ReactComponent as RedditIcon } from "../../assets/svg/reddit.svg";
+import { RedditIcon } from "../../assets/svg";
 import style from "./SearchResult.module.scss";
 function SearchResult({ sub }) {
   const { display_name, title, subscribers } = sub;

@@ -6,10 +6,8 @@ import React, {
   useCallback,
 } from "react";
 import { useHistory } from "react-router-dom";
-import { Spin } from "antd";
 import { apiGet } from "../../utils/api";
-import NavBar from "../../components/navBar/NavBar";
-import Gallery from "../../components/gallery/Gallery";
+import { NavBar, Gallery, Spin } from "../../components";
 import styles from "./Home.module.scss";
 
 function Home() {

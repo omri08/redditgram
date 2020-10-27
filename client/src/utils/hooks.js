@@ -6,7 +6,7 @@ export function useComponent(base, ChangeTo, bool) {
   useMemo(() => {
     if (bool) setComponent(ChangeTo);
     else setComponent(base);
-  }, [bool]);
+  }, [bool, ChangeTo, base]);
 
   return component;
 }
