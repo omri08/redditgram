@@ -25,32 +25,39 @@ function Post() {
     loadPost();
   }, [id]);
 
-  if (loading) return <Spin tip="Loading" />;
   return (
     <div className={style.container}>
-      <div className={style.content}>
-        <section className={style.info}>
-          <span className={style.titles}>
-            <Link to={`/${post.sub}`}>
-              <p className={style.sub}>{`r/${post.sub}`}</p>
-            </Link>
-            <p className={style.author}>{`Posted by: ${post.author}`}</p>
-            <span className={style.ups}>
-              {`Upvotes: ${post.ups} `}
-              <HeartFilled className={style.icon} />
-            </span>
-          </span>
-          <h1>{post.title}</h1>
-        </section>
-        <Card post={post} customStyle={cardStyle} controls={true} />
-      </div>
-      <PerfectScrollbar className={style.replies}>
-        {Object.keys(post.replies).length > 0 ? (
-          post.replies.map((reply) => <Reply key={reply.id} reply={reply} />)
-        ) : (
-          <h3>No comments yet</h3>
-        )}
-      </PerfectScrollbar>
+      {loading ? (
+        <Spin tip="Loading" center={true} />
+      ) : (
+        <>
+          <div className={style.content}>
+            <section className={style.info}>
+              <span className={style.titles}>
+                <Link to={`/${post.sub}`}>
+                  <p className={style.sub}>{`r/${post.sub}`}</p>
+                </Link>
+                <p className={style.author}>{`Posted by: ${post.author}`}</p>
+                <span className={style.ups}>
+                  {`Upvotes: ${post.ups} `}
+                  <HeartFilled className={style.icon} />
+                </span>
+              </span>
+              <h1>{post.title}</h1>
+            </section>
+            <Card post={post} customStyle={cardStyle} controls={true} />
+          </div>
+          <PerfectScrollbar className={style.replies}>
+            {Object.keys(post.replies).length > 0 ? (
+              post.replies.map((reply) => (
+                <Reply key={reply.id} reply={reply} />
+              ))
+            ) : (
+              <h3>No comments yet</h3>
+            )}
+          </PerfectScrollbar>
+        </>
+      )}
     </div>
   );
 }

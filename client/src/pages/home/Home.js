@@ -57,7 +57,7 @@ function Home() {
 
   function setPath() {
     let endPoint;
-    if (history.location.pathname === "/") endPoint = "/all";
+    if (history.location.pathname === "/") endPoint = "/aww";
     else endPoint = history.location.pathname;
 
     return `/posts${endPoint}`;

@@ -19,7 +19,7 @@ export default function Search() {
     loadSubs();
   }, [query]);
 
-  if (loading) return <Spin tip="Searching" />;
+  if (loading) return <Spin center={true} tip="Searching" />;
   return (
     <div className={styles.container}>
       <div className={styles.content}>
