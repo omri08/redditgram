@@ -4,7 +4,7 @@ RedditGram is a web app for viewing Reddit posts and comments in a way that simi
 
 ## Demo
 
-![demo](https://user-images.githubusercontent.com/54754198/97907061-5aeb7600-1d4d-11eb-9330-f74c9519dc30.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/54754198/97907744-65f2d600-1d4e-11eb-9b6e-6647473c5b6e.gif)
 
 ## FrontEnd
 
