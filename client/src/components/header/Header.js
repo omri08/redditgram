@@ -9,32 +9,25 @@ const { Search } = Input;
 
 export default function Header() {
   const { pathname } = useLocation();
+  const size = useWindowSize();
   const history = useHistory();
   const Home = useComponent(HomeIcon, HomeFilledIcon, "/" === pathname);
 
-  const { width } = useWindowSize();
   return (
     <div className={styles.container}>
       <Link className={styles.logo} to="/">
-        <h1>RedditGram</h1>
+        {size.width > 640 ? <h1>RedditGram</h1> : <h1>R</h1>}
       </Link>
       <Search
         placeholder="Search subreddits"
         onSearch={(value) => history.push(`/search/${value}`)}
-        style={{ width: 400 }}
+        style={size.width > 640 ? { width: 400 } : { width: 200 }}
         className={styles.search}
       />
       <span className={styles.icons}>
         <Link to="/">
           <Home />
         </Link>
-        {width <= 640 ? (
-          <Link to="/explore">
-            <ExploreIcon />
-          </Link>
-        ) : (
-          ""
-        )}
       </span>
     </div>
   );
