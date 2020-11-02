@@ -4,6 +4,8 @@ RedditGram is a web app for viewing Reddit posts and comments in a way that simi
 
 ## Demo
 
+![demo](https://user-images.githubusercontent.com/54754198/97907061-5aeb7600-1d4d-11eb-9330-f74c9519dc30.gif)
+
 ## FrontEnd
 
 The frontEnd is built with React, Scss modules, Ant Design, Axios and fully responsive.
