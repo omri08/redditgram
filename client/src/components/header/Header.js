@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "antd";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { useComponent, useWindowSize } from "../../utils/hooks";
-import { HomeIcon, HomeFilledIcon, ExploreIcon } from "../../assets/svg";
+import { HomeIcon, HomeFilledIcon } from "../../assets/svg";
 import styles from "./Header.module.scss";
 
 const { Search } = Input;
