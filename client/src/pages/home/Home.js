@@ -38,12 +38,10 @@ function Home() {
   async function loadPosts() {
     let final;
     setLoading(true);
-    const params = posts
-      ? {
-          after: posts.after,
-        }
-      : null;
-    const res = await apiGet(setPath(), params);
+    const params = posts ? `?after=${posts.after}` : "";
+    const path = setPath().concat(params);
+    console.log(path);
+    const res = await apiGet(path);
     if (posts) {
       final = {
         after: res.data.after,
