@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_ENDPOINT,
+  baseURL: "https://3cxux9as4i.execute-api.eu-west-1.amazonaws.com/dev",
 });
 
 export async function apiGet(url, params) {
